@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<grapevine version="3">
+  <vampire name="Puppet Example" nature="Autocrat" demeanor="Barbarian" clan="Assamites" sect="Furores" sire="Papa got a big old sire" generation="10" title="Chamberlain" blood="31" willpower="23" conscience="1" selfcontrol="1" courage="1" pathtraits="1" physicalmax="11" status="Active" startdate="9/20/2010 6:22:49 PM" lastmodified="9/20/2010 6:26:39 PM">
+    <experience unspent="0" earned="0"/>
+    <traitlist name="Physical" abc="yes" display="1">
+      <trait name="Athletic" note="misc"/>
+      <trait name="Deadly" val="2" note="sta"/>
+      <trait name="Energetic" val="3" note="misc"/>
+      <trait name="Robust" val="4" note="sta"/>
+    </traitlist>
+    <traitlist name="Social" abc="yes" display="1">
+      <trait name="Commanding" note="man"/>
+      <trait name="Intimidating" val="3" note="misc"/>
+      <trait name="Seductive" val="2" note="app"/>
+    </traitlist>
+    <traitlist name="Mental" abc="yes" display="1">
+      <trait name="Calm" val="3" note="misc"/>
+      <trait name="Clever" note="wits"/>
+      <trait name="Dedicated" val="2" note="misc"/>
+    </traitlist>
+    <traitlist name="Negative Physical" abc="yes" negative="yes" display="1">
+      <trait name="Frail" val="2"/>
+    </traitlist>
+    <traitlist name="Negative Social" abc="yes" negative="yes" display="1">
+      <trait name="Ghastly"/>
+    </traitlist>
+    <traitlist name="Negative Mental" abc="yes" negative="yes" display="1">
+      <trait name="Ignorant"/>
+      <trait name="Predictable" val="3"/>
+    </traitlist>
+    <traitlist name="Status" abc="yes" display="1">
+      <trait name="Advocate" val="2"/>
+      <trait name="Battle-Scarred"/>
+      <trait name="Blessed"/>
+    </traitlist>
+    <traitlist name="Abilities" abc="yes" display="1">
+      <trait name="Archery" val="2"/>
+      <trait name="Awareness" val="2"/>
+      <trait name="Brawl" val="3"/>
+    </traitlist>
+    <traitlist name="Influences" abc="yes" display="1">
+      <trait name="Espionage"/>
+      <trait name="High Society"/>
+      <trait name="Legal"/>
+    </traitlist>
+    <traitlist name="Backgrounds" abc="yes" display="1">
+      <trait name="Fame" val="3"/>
+      <trait name="Influence"/>
+    </traitlist>
+    <traitlist name="Health Levels" abc="no" display="1">
+      <trait name="Healthy" val="2"/>
+      <trait name="Bruised" val="3"/>
+      <trait name="Wounded" val="2"/>
+      <trait name="Incapacitated"/>
+      <trait name="Torpor"/>
+    </traitlist>
+    <traitlist name="Bonds" abc="yes" display="1">
+      <trait name="Cuckface" val="5" note="twelve"/>
+      <trait name="DickButt" val="3"/>
+      <trait name="YoMamma"/>
+    </traitlist>
+    <traitlist name="Miscellaneous" abc="no" display="1"/>
+    <traitlist name="Derangements" abc="yes" atomic="yes" negative="yes" display="5">
+      <trait name="Acute Sanguinary Aversion" val="2"/>
+      <trait name="Angelism" val="2"/>
+      <trait name="Antisocial Disorder" val="2" note="aeou"/>
+    </traitlist>
+    <traitlist name="Disciplines" abc="no" atomic="yes" display="5">
+      <trait name="Fortitude: Resistance" val="6" note="int."/>
+      <trait name="Fortitude: Invulnerability" val="12" note="elder"/>
+      <trait name="Fortitude: Invulnerability" val="12" note="elder"/>
+    </traitlist>
+    <traitlist name="Rituals" abc="no" atomic="yes" display="5">
+      <trait name="Sabbat: Advanced: Eyes of the Beast" val="6"/>
+      <trait name="Sabbat: Advanced: Invisible Chains of Binding" val="6"/>
+      <trait name="Sabbat: Advanced: Mindcrawler" val="6"/>
+    </traitlist>
+    <traitlist name="Merits" abc="yes" atomic="yes" display="4">
+      <trait name="Aware of False Love" val="2"/>
+      <trait name="Berserker" val="2-3"/>
+    </traitlist>
+    <traitlist name="Flaws" abc="yes" atomic="yes" negative="yes" display="4">
+      <trait name="Amnesia" val="2 or 4"/>
+      <trait name="Bard's Tongue"/>
+    </traitlist>
+    <traitlist name="Equipment" abc="yes" display="1"/>
+    <traitlist name="Locations" abc="yes" atomic="yes" display="5"/>
+    <notes>
+      <![CDATA[Papa got a big ol' notes section]]>
+    </notes>
+  </vampire>
+</grapevine>
