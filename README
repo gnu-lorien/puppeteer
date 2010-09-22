@@ -2,9 +2,18 @@ Puppeteer
 
 Puppeteer is a Python program that handles uploading MET characters to the Puppet Prince website. You will provide your username and password. Then just pass it an XML GEX file and it will create new characters with all of the data from the file.
 
+Import
+
+Provide your username, password, and an XML GEX file to parse and upload.
+
+Export
+
+Provide your username, password, and the name of a file to save all of your Puppet Prince characters to.
+
 Caveats:
 
 - Currently only supports vampires
+- Skips Virtues and attributes like name and Clan
 - Cannot import the notes section
 - Cannot import XP as Puppet Prince can't store enough information for this conversion to be valid
 
@@ -19,6 +28,7 @@ Caveats:
     GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <http://www.gnu.org/licenses/&gt;.
 
 Andrew Sayman Copyright 2010
+

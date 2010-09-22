@@ -13,6 +13,10 @@
 #
 #   Andrew Sayman Copyright 2010
 
+"""
+Utilities for importing data into Puppet Prince
+"""
+
 from __future__ import with_statement
 
 #TODO Properly merge influences into backgrounds
@@ -28,14 +32,8 @@ from xml.sax.handler import feature_namespaces, property_lexical_handler
 from xml.sax import ContentHandler
 from xml.sax.saxutils import unescape, escape
 
-# for the gui
-from Tkinter import *
-from tkFileDialog import askopenfilename
-
-import time
-import Queue
-import threading
-import sys
+# gui
+from gui import PuppeteerApp
 
 class PuppetPoster():
     traitlist_conversion = {
@@ -45,16 +43,16 @@ class PuppetPoster():
             'Negative Physical': 'NegativePhysicalTrait',
             'Negative Social': 'NegativeSocialTrait',
             'Negative Mental': 'NegativeMentalTrait',
-            'Disciplines': 'Discipline',
-            'Abilities': 'Ability',
-            'Backgrounds': 'Background',
-            'Influences': 'Background',
-            'Status': 'Status',
+            'Disciplines':  'Discipline',
+            'Abilities':    'Ability',
+            'Backgrounds':  'Background',
+            'Influences':   'Background',
+            'Status':       'Status',
             'Derangements': 'Derangement',
-            'Merits': 'Merit',
-            'Flaws': 'Flaw',
-            'Rituals': 'Ritual',
-            'Bonds': 'Viniculum',
+            'Merits':       'Merit',
+            'Flaws':        'Flaw',
+            'Rituals':      'Ritual',
+            'Bonds':        'Viniculum',
     }
 
     def __init__(self, username, password):
@@ -185,86 +183,11 @@ class PuppetLoader(ContentHandler):
         print 'Warning'
         raise exception
 
+class Importer(PuppeteerApp):
+    def __init__(self, root):
+        super(Importer, self).__init__(root)
 
-class mywidgets:
-    def __init__(self,root):
-        self.queue = Queue.Queue()
-        self.root = root
-
-        frame=Frame(root)
-
-        self.username_label = Label(frame, text="Username")
-        self.username_label.grid(row=1, column=0)
-        self.username = Entry(frame)
-        self.username.grid(row=1, column=1)
-
-        self.password_label = Label(frame, text="Password")
-        self.password_label.grid(row=2, column=0)
-        self.password = Entry(frame, show="*")
-        self.password.grid(row=2, column=1)
-
-        self.browse_button = Button(frame, text="Browse for file", command=self.browse_for_file)
-        self.browse_button.grid(row=3, column=0)
-        self.filetext = Entry(frame)
-        self.filetext.grid(row=3, column=1)
-
-        self.innerFrame = Frame(frame)
-        self.scrollbar = Scrollbar(self.innerFrame)
-        self.status = Text(self.innerFrame, height=10, width=30, yscrollcommand=self.scrollbar.set)
-        self.status.pack(side=LEFT)
-        self.scrollbar.config(command=self.status.yview)
-        self.scrollbar.pack(side=RIGHT, fill=BOTH, expand=1)
-        self.innerFrame.grid(row=4, column=0, columnspan=2)
-
-        self.quit_button = Button(frame, text="Quit", command=self.megadie)
-        self.quit_button.grid(row=5, column=0)
-        self.upload_button = Button(frame, text="Upload", command=self.upload)
-        self.upload_button.grid(row=5, column=1)
-
-        frame.grid()
-        return
-
-    def megadie(self):
-        print "In megadie"
-        sys.exit(0)
-
-    def browse_for_file(self):
-        filename = askopenfilename(filetypes=[("allfiles","*"),("Grapevine XML Gex Files","*.gex")])
-        self.filetext.delete(0, END)
-        self.filetext.insert(0, filename)
-
-    def print_status(self, *args, **kwargs):
-        self.queue.put((args, kwargs))
-
-    def print_queued(self):
-        while self.queue.qsize():
-            try:
-                args, kwargs = self.queue.get(0)
-                for arg in args:
-                    self.status.insert(CURRENT, str(arg))
-                    self.status.insert(CURRENT, kwargs.get('sep', ' '))
-                self.status.insert(CURRENT, kwargs.get('end', '\n'))
-                self.status.see(CURRENT)
-            except Queue.Empty:
-                pass
-
-    def upload(self):
-        self.running = 1
-        self.thread1= threading.Thread(target=self.do_upload)
-        self.thread1.daemon = True
-        self.thread1.start()
-        self.upload_button.configure(state=DISABLED)
-
-        self.periodicFlush()
-
-    def periodicFlush(self):
-        self.print_queued()
-        if self.running:
-            self.root.after(100, self.periodicFlush)
-        else:
-            self.upload_button.configure(state=ENABLED)
-
-    def do_upload(self):
+    def do(self):
         try:
             poster = PuppetPoster(self.username.get(), self.password.get())
             loader = PuppetLoader(poster, self.print_status)
@@ -278,8 +201,8 @@ class mywidgets:
             self.print_status(traceback.format_exc())
 
 if __name__ == '__main__':
-
+    from Tkinter import Tk
     root = Tk()
-    app = mywidgets(root)
-    root.title('GXGPPU')
+    app = Importer(root)
+    root.title('Puppeteer Importer')
     root.mainloop()
